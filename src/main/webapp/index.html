@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+
+<script type="text/javascript">
+$(document).ready(function() 
+{ 
+	$.ajax({
+		type: "GET",
+		url:"http://localhost:8080/api/supervisors",
+		dataType: "json",
+		success: function (data) {
+			$.each(data,function(i,data)
+			{
+				var quote = "\"";
+				var div_data="<option value="+quote+data+quote+">"+data+"</option>";
+				$(div_data).appendTo('#supervisor'); 
+			});
+		}
+	});
+});
+
+</script>
+
+
+
+<body>
+	<h2>Notification Request Form</h2>
+	
+	<form id="notifForm" name="notifForm" method="post" action="http://localhost:8080/api/submit">
+		<label for="fName">First name:</label><br>
+		<input type="text" id="fName" name="fName">
+		<br>
+		<label for="lName">Last name:</label><br>
+		<input type="text" id="lName" name="lName">
+		<br>
+		<p>How would you prefer to be notified?<p>
+		<input type="checkbox" id="notifType1" name="notifType1" value="email">
+		<label for="notifType1" for="emailAddress">Email</label><br>
+		<input type="text" id="emailAddress" name="emailAddress">
+		<br>
+		<input type="checkbox" id="notifType2" name="notifType2" value="phone">
+		<label for="notifType2" for="phoneNumber">Phone Number</label><br>
+		<input type="text" id="phoneNumber" name="phoneNumber">
+		<br>
+		<br>
+		<label for="supervisor">Supervisor</label><br>
+		<select id="supervisor" name="supervisor">
+			<option value=""></option>
+		</select>
+		
+		<input type="submit" value="Submit">
+	</form>
+
+
+</body>
+</html>
