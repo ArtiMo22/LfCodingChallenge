@@ -53,13 +53,6 @@ public class LfCodingChallengeApplication {
 
 	@PostMapping(path = "/api/submit", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public ResponseEntity<String> submit(@ModelAttribute NotificationsForm request) {
-
-		/*
-		 * if (request.isValid()) { System.out.println(request.toString()); return new
-		 * ResponseEntity<String>("Notification request submitted",
-		 * HttpStatus.ACCEPTED); } else { return new
-		 * ResponseEntity<String>("Missing a required field", HttpStatus.BAD_REQUEST); }
-		 */
 		
 		System.out.println(request.toString());
 
